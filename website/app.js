@@ -1,5 +1,5 @@
 /* Global Variables */
-const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip='
+const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip='
 const apiKey = 'd5b137fecf844da9a39d78158e1f4806';
 const generateButton = document.querySelector('#generate');
 const zipCode = document.querySelector('#zip');
