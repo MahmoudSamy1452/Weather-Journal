@@ -1,6 +1,6 @@
 /* Global Variables */
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip='
-const apiKey = 'd5b137fecf844da9a39d78158e1f4806';
+const apiKey = '';
 const generateButton = document.querySelector('#generate');
 const zipCode = document.querySelector('#zip');
 const feeling = document.querySelector('#feelings');
@@ -48,9 +48,9 @@ const updateUI = async(url) => {
 	try{
 		const data = await response.json();
 		console.log(data);
-		date.innerText = "date: " + data[data.length - 1]["date"];
-		temp.innerText = "temp(in kelvin): "+data[data.length - 1]["temp"];
-		content.innerText = "Your feeling: "+data[data.length - 1]["user-response"];
+		date.innerText = "date: " + data["date"];
+		temp.innerText = "temp: "+data["temp"];
+		content.innerText = "Your feeling: "+data["user-response"];
 	}
 	catch(error){
 		console.log(Error(error));
@@ -59,10 +59,16 @@ const updateUI = async(url) => {
 
 function startAction(){
 	const zip = zipCode.value;
+	const zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
 	const userResponse = feeling.value;
-	getDataFromAPI(baseURL+zip+'&appid='+apiKey)
- .then((response) => {postDataToApp('/postData',{"date" : newDate, "temp" : response.main.temp, "user-response" : userResponse})})
- .then(() => (updateUI('/getData')))
+	const userResponsePattern = /[^0-9]/;
+	if (zipCodePattern.test(zip) && userResponsePattern.test(userResponse)){
+		getDataFromAPI(baseURL+zip+'&units=metric'+'&appid='+apiKey)
+		.then((response) => {postDataToApp('/postData',{"date" : newDate, "temp" : response.main.temp, "user-response" : userResponse})})
+		.then(() => (updateUI('/getData')))
+	} else{
+		alert('Something went wrong! Please make sure that the zip code and your response are correct and try again.')
+	}
 }
 	
 
