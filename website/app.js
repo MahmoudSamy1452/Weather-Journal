@@ -48,9 +48,9 @@ const updateUI = async(url) => {
 	try{
 		const data = await response.json();
 		console.log(data);
-		date.innerText = "date: " + data["date"];
-		temp.innerText = "temp: "+data["temp"];
-		content.innerText = "Your feeling: "+data["user-response"];
+		date.innerHTML = "date: " + data["date"];
+		temp.innerHTML = "temp: "+data["temp"];
+		content.innerHTML = "Your feeling: "+data["user-response"];
 	}
 	catch(error){
 		console.log(Error(error));
