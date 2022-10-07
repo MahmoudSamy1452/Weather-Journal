@@ -1,7 +1,7 @@
 # Weather-Journal App Project
 
 ## Overview
-Weather Journal app implemented as an asynchronous web app that uses Web API and user data to dynamically update the UI. The app outputs data to according to the input of the user. 
+Weather Journal app implemented as an asynchronous web app that uses Web API and user data to dynamically update the UI. The app outputs data according to the input of the user. 
 
 ## Instructions
 You can visit https://weather-journal-prototype.herokuapp.com/ to try the app yourself. You should fill in the required data and click generate to get the date, temperature in degrees Fahrenheit and your mood.
